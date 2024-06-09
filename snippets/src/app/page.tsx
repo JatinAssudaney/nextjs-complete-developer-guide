@@ -1,6 +1,12 @@
 import { db } from "@/db";
 import Link from "next/link";
 
+// OPTION 1: TIME BASED CACHING
+// export const revalidate = 3;
+
+// OPTION 3: DISABLE CACHING
+// export const dynamic = "force-dynamic"
+
 export default async function Home() {
   const snippets = await db.snippet.findMany();
   const renderedSnippets = snippets.map((snippet) => {
